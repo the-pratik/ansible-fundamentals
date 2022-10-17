@@ -1,0 +1,22 @@
+---
+- name: Play 1
+  hosts: all
+  connection: local
+  tasks:
+    - name: Task 1
+      command: ls
+      register: "output"
+    - debug: var=output.stdout_lines
+
+    - name: "Create folder, create file into it"
+      shell: "cd /tmp/;mkdir LearnAnsible;cd LearnAnsible;echo abc > myfile"
+      register: "output"
+
+- name: Play 2
+  hosts: all
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: "Delete previous folder, create new one"
+      shell: "cd /tmp/;rm -r LearnAnsible; mkdir LearnMoreAnsible;cd LearnMoreAnsible; echo 'Pratik Deshpande' > Author"
+      register: "output"

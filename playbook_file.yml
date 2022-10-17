@@ -1,0 +1,21 @@
+---
+- name: Play 1
+  hosts: all
+  connection: local
+  tasks:
+    - name: "Compress directory /tmp/LearnMoreAnsible"
+      archive:
+        path: /tmp/LearnMoreAnsible
+        dest: /tmp/LearnMoreAnsible.tgz
+
+    - name: "Copy archive to home"
+      copy:
+        src: /tmp/LearnMoreAnsible.tgz
+        dest: /home/rhyme/LearnMoreAnsible.tgz
+
+    - name: "Find archives in /home"
+      find: 
+        paths: /home/rhyme
+        patterns: '*.tgz'
+      register: output
+    - debug: var=output.files

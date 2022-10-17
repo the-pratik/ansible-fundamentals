@@ -1,0 +1,17 @@
+---
+- name: "Use apt"
+  hosts: all
+  connection: local
+  become: true
+  become_method: sudo
+  tasks:
+    - name: Remove vim
+      apt:
+        name: vim
+        state: absent
+
+    - name: Install vim and call apt update
+      apt: 
+        name: vim
+        state: present
+        update_cache: yes
