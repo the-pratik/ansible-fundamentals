@@ -11,7 +11,7 @@
 
 <h3># For nginx on local machine:</h3>
 
-Run `ansible-playbook nginx.yml`
+Run `ansible-playbook local_nginx.yml`
 
 <h3># For ping module:</h3>
 
