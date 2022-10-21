@@ -1,0 +1,14 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  become: true
+  tasks:
+    - name: Install nginx
+      apt:
+        pkg: nginx
+        state: present
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true  
